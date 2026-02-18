@@ -35,6 +35,8 @@ jobs:
         AZURE_API_HOST: ${{ secrets.AZURE_API_HOST }}
         AZURE_DEPLOYMENT_NAME: ${{ secrets.AZURE_DEPLOYMENT_NAME }}
         AZURE_API_VERSION: ${{ secrets.AZURE_API_VERSION }}
+        N8N_AAD_OBJECT_ID: ${{ secrets.N8N_AAD_OBJECT_ID }}
+        N8N_TENANT_ID: ${{ secrets.N8N_TENANT_ID }}
       run: npm run test:e2e
     
     - name: Upload test results
@@ -69,7 +71,9 @@ jobs:
         echo "AZURE_API_HOST=${{ secrets.AZURE_API_HOST }}" >> .env
         echo "AZURE_DEPLOYMENT_NAME=${{ secrets.AZURE_DEPLOYMENT_NAME }}" >> .env
         echo "AZURE_API_VERSION=${{ secrets.AZURE_API_VERSION }}" >> .env
-    
+        echo "N8N_AAD_OBJECT_ID=${{ secrets.N8N_AAD_OBJECT_ID }}" >> .env
+        echo "N8N_TENANT_ID=${{ secrets.N8N_TENANT_ID }}" >> .env
+
     - name: Build Docker image
       run: docker-compose build
     
