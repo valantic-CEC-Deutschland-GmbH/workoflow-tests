@@ -36,3 +36,4 @@ docker-volumes/
 .promptfoo/
 promptfoo-cache/
 .claude
+.worktrees/
