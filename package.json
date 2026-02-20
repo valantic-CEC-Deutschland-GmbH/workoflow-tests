@@ -10,6 +10,7 @@
     "test:view": "docker-compose run -p 8080:8080 promptfoo-shell promptfoo view",
     "test:export": "docker-compose run promptfoo-shell promptfoo export -o test-results/report.html",
     "test:filter": "docker-compose run promptfoo-shell promptfoo eval -c configs/promptfoo.config.js --filter",
+    "test:sharepoint": "docker-compose run promptfoo-shell promptfoo eval -c configs/promptfoo.config.js --no-cache --filter-pattern SharePoint -o test-results/output.html",
     "test:dry-run": "docker-compose run promptfoo-shell promptfoo eval -c configs/promptfoo.config.js --dry-run",
     "test:verbose": "docker-compose run promptfoo-shell promptfoo eval -c configs/promptfoo.config.js -v",
     "test:repeat": "docker-compose run promptfoo-shell promptfoo eval -c configs/promptfoo.config.js --repeat",

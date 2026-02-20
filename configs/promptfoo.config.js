@@ -14,6 +14,10 @@ import sapC4cTests from './tests/sap-c4c.tests.js';
 // Re-export common helpers for backward compatibility
 import { createLLMRubric, createTestCase, createTestCaseWithAsserts } from './tests/common.js';
 
+// Identity configuration (used by sub-workflows: SharePoint, Jira, etc.)
+const aadObjectId = process.env.N8N_AAD_OBJECT_ID || '45908692-019e-4436-810c-b417f58f5f4f';
+const tenantId = process.env.N8N_TENANT_ID || 'ae6f26a3-6f27-4ed6-a3a8-800c3226fb79';
+
 // Aggregate all tests
 const allTests = [
   ...mainAgentTests,
@@ -58,12 +62,12 @@ export default {
           id: '{{messageId}}',
           from: {
             name: 'Test User',
-            aadObjectId: '45908692-019e-4436-810c-b417f58f5f4f',
+            aadObjectId,
             id: `user-${Math.random().toString(36).substring(2, 15)}-${Date.now()}`
           },
           conversation: {
             conversationType: 'personal',
-            tenantId: 'ae6f26a3-6f27-4ed6-a3a8-800c3226fb79',
+            tenantId,
             id: '{{messageId}}'
           },
           locale: '{{locale}}',

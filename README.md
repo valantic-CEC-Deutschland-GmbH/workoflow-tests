@@ -93,9 +93,15 @@ workoflow-tests/
 ├── configs/                 # Test configuration
 │   ├── promptfoo.config.js  # Main configuration
 │   └── tests/               # Per-agent test definitions
+│       ├── common.js         # Shared test helpers
+│       ├── main-agent.tests.js
+│       ├── system-tools.tests.js
 │       ├── jira.tests.js
+│       ├── sharepoint.tests.js
 │       ├── confluence.tests.js
-│       └── ...
+│       ├── gitlab.tests.js
+│       ├── trello.tests.js
+│       └── sap-c4c.tests.js
 ├── scripts/                 # Shell utilities
 ├── test-results/            # Generated reports
 ├── .github/workflows/       # CI/CD pipelines
@@ -135,12 +141,32 @@ module.exports = {
 
 ### Environment Variables
 
+#### n8n Configuration
+
 | Variable | Description | Default |
 |----------|-------------|---------|
 | `N8N_WEBHOOK_URL` | Target n8n webhook endpoint | Required |
+| `N8N_BASIC_AUTH_ENCODED` | Base64-encoded Basic Auth credentials for webhook | Optional |
+| `N8N_AAD_OBJECT_ID` | Azure AD object ID for user identity (used by sub-workflows: SharePoint, Jira, etc.) | `45908692-...` |
+| `N8N_TENANT_ID` | Microsoft tenant ID for user identity | `ae6f26a3-...` |
+
+#### Azure OpenAI Configuration
+
+| Variable | Description | Default |
+|----------|-------------|---------|
 | `AZURE_API_KEY` | Azure OpenAI API key | Required |
-| `AZURE_API_HOST` | Azure OpenAI endpoint | Required |
+| `OPENAI_API_KEY` | OpenAI API key (alias, set to same value as `AZURE_API_KEY`) | Required |
+| `AZURE_API_HOST` | Azure OpenAI endpoint | `oai-cec-de-germany-west-central.openai.azure.com` |
+| `AZURE_DEPLOYMENT_NAME` | Azure OpenAI model deployment name | `gpt-4o-mini` |
+| `AZURE_API_VERSION` | Azure OpenAI API version | `2025-01-01-preview` |
+
+#### Test Configuration
+
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `TEST_ENVIRONMENT` | Environment mode (`development`, `staging`, `production`) | `development` |
 | `SEMANTIC_THRESHOLD` | Similarity threshold (0-1) | `0.85` |
+| `MAX_RETRIES` | Retry attempts for rate-limited requests | `3` |
 | `TEST_TIMEOUT` | Request timeout in ms | `30000` |
 
 ## Commands Reference
@@ -150,6 +176,7 @@ module.exports = {
 | Command | Description |
 |---------|-------------|
 | `npm run test:e2e` | Run full test suite |
+| `npm run test:sharepoint` | Run SharePoint tests only |
 | `npm run test:watch` | Run tests in watch mode |
 | `npm run test:filter "name"` | Run specific tests by name |
 | `npm run test:verbose` | Run with detailed output |
