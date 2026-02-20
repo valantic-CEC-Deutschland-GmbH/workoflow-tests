@@ -7,11 +7,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## 2026-02-20
 
 ### Added
+- 7 new SharePoint search relevance E2E tests (sharepoint-test-003 through 009):
+  - Travel policy with city name — validates boilerplate trap avoidance (Mannheim)
+  - Travel expense submission process
+  - Vacation policy lookup
+  - Home office policy
+  - Business trip to München — validates location boilerplate avoidance
+  - Specific document search by name (Reisekostenrichtlinie)
+  - HR document topic exploration
+- Negative assertions (`not-contains`) on boilerplate-trap tests to catch contract/agreement results (Rahmenvertrag, Framework Agreement, Angebot)
 - Configurable tenant/user identity via `N8N_AAD_OBJECT_ID` and `N8N_TENANT_ID` environment variables (no longer hardcoded)
 - `test:sharepoint` npm script for running SharePoint tests in isolation
 - Identity env vars passed through docker-compose to container
 - Identity env vars added to GitHub Actions and Jenkins CI pipelines
 - Stage environment variables documented in `.env.example`
+- Comprehensive environment variable documentation in README (n8n, Azure OpenAI, test config sections)
+- Full project structure listing in README with all test files
 
 ### Fixed
 - `test:sharepoint` npm script used non-existent `--filter-description` flag, replaced with correct `--filter-pattern`
