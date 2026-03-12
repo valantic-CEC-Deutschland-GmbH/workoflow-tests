@@ -10,6 +10,7 @@ import confluenceTests from './tests/confluence.tests.js';
 import gitlabTests from './tests/gitlab.tests.js';
 import trelloTests from './tests/trello.tests.js';
 import sapC4cTests from './tests/sap-c4c.tests.js';
+import peopleFinderTests from './tests/people-finder.tests.js';
 
 // Re-export common helpers for backward compatibility
 import { createLLMRubric, createTestCase, createTestCaseWithAsserts } from './tests/common.js';
@@ -27,7 +28,8 @@ const allTests = [
   ...confluenceTests,
   ...gitlabTests,
   ...trelloTests,
-  ...sapC4cTests
+  ...sapC4cTests,
+  ...peopleFinderTests
 ];
 
 // Main configuration export
@@ -100,5 +102,6 @@ export {
   confluenceTests,
   gitlabTests,
   trelloTests,
-  sapC4cTests
+  sapC4cTests,
+  peopleFinderTests
 };

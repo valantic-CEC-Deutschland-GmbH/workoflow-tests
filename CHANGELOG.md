@@ -4,6 +4,21 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## 2026-03-12
+
+### Added
+- 12 new People Finder E2E tests (`configs/tests/people-finder.tests.js`):
+  - Project search (ESA, GHS, Lekkerland Kundenportal)
+  - Skill search (Python, PHP)
+  - Role + project combination (Solution Architect in Daimler Truck)
+  - Profile lookup (Patrick Schönfeld)
+  - Location search (Langenfeld)
+  - Language search (Französisch)
+  - Certificate search (AWS)
+  - Company search (valantic CEC Deutschland GmbH)
+  - Industry search (Automotive)
+- `peopleFinderTests` imported and spread into `promptfoo.config.js`
+
 ## 2026-02-20
 
 ### Added
